@@ -1,0 +1,6 @@
+getmac==0.8.3
+mysql-connector-python==8.0.25
+psutil==5.9.3
+pyserial
+sqlite3
+gpiozero
