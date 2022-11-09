@@ -204,7 +204,7 @@ def read_ip():
 
 
 if __name__=='__main__':
-    cabin_name='Pi'
+    cabin_name='53'
     ip=read_ip()+' - '+gma()
     group="Offices"
     db=ctr_energy()

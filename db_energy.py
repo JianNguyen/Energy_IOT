@@ -12,7 +12,7 @@ from database import *
 import sqlite3
 from mysql.connector import Error
 import mysql.connector
-
+import os
 
 class dbData(hostdb):
     def __init__(self):
@@ -69,6 +69,10 @@ class dbData(hostdb):
 
 
 class dbLocal():
+    def __init__(self):
+        self.dirname = os.path.dirname(__file__)
+        if self.dirname=="":
+            self.dirname=os.getcwd()
     def close_connect(self):
         try:
             self.conn.close()
@@ -77,7 +81,7 @@ class dbLocal():
 
     def query_cmd_select(self,cmd):
         try:
-            self.conn = sqlite3.connect('EnergyLocal.db', timeout=60)
+            self.conn = sqlite3.connect(self.dirname+'/EnergyLocal.db', timeout=60)
             self.curs = self.conn.cursor()
 
             self.curs.execute(cmd)
@@ -89,7 +93,7 @@ class dbLocal():
             self.close_connect()
     def query_cmd_commit(self,cmd):
         try:
-            self.conn = sqlite3.connect('EnergyLocal.db',timeout=60)
+            self.conn = sqlite3.connect(self.dirname+'/EnergyLocal.db',timeout=60)
             self.curs = self.conn.cursor()
             
             self.curs.execute(cmd)
